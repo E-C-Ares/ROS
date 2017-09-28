@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gen-e-manga</title>
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        #SB {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .SB .innerpage {
+            border: 1px solid red;
+            margin: 10px;
+            text-align: center;
+            height: 400px;
+            width: 400px;
+            float: left;
+        }
+
+        .innerpage img {
+            border: none;
+            vertical-align: middle;
+            height: auto;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<ul class="pagelist">
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F001.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F002.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F003.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F004.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F005.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F006.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F007.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F008.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F009.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F010.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F011.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F012.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F013.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F014.png&quality=90&size=c10000_u10000"> </li>
+    <li class="innerpage"> <img src="https://pcs.baidu.com/rest/2.0/pcs/thumbnail?method=generate&app_id=250528&path=%2FSHAR%2Fmanga%2Ffate-grand_order-1-riyu%2F015.png&quality=90&size=c10000_u10000"> </li>
+</ul>
+
+<script type="text/javascript">
+    var aImages = document.getElementsByClassName("pagelist").getElementsByTagName('img'); //获取id为SB的文档内所有的图片
+    loadImg(aImages);
+    window.onscroll = function() { //滚动条滚动触发
+        loadImg(aImages);
+    };
+    //getBoundingClientRect 是图片懒加载的核心
+    function loadImg(arr) {
+        for(var i = 0, len = arr.length; i < len; i++) {
+            if(arr[i].getBoundingClientRect().top < document.documentElement.clientHeight && !arr[i].isLoad) {
+                arr[i].isLoad = true; //图片显示标志位
+                //arr[i].style.cssText = "opacity: 0;";
+                (function(i) {
+                    setTimeout(function() {
+                        if(arr[i].dataset) { //兼容不支持data的浏览器
+                            aftLoadImg(arr[i], arr[i].dataset.imgurl);
+                        } else {
+                            aftLoadImg(arr[i], arr[i].getAttribute("data-imgurl"));
+                        }
+                        arr[i].style.cssText = "transition: 1s; opacity: 1;" //相当于fadein
+                    }, 500)
+                })(i);
+            }
+        }
+    }
+
+    function aftLoadImg(obj, url) {
+        var oImg = new Image();
+        oImg.onload = function() {
+            obj.src = oImg.src; //下载完成后将该图片赋给目标obj目标对象
+        }
+        oImg.src = url; //oImg对象先下载该图像
+    }
+</script>
+
+</body>
+
+</html>
